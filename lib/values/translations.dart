@@ -2,15 +2,21 @@ library values;
 
 import 'dart:ui' show Locale;
 
-import 'package:string_translate/string_translate.dart';
+import 'package:string_translate/string_translate.dart'
+    show StandardTranslations, TranslationLocales;
 
+/// Contains the Translated Strings
 class TranslatedStrings {
+  /// Own Translations, that are not provided through the [StandardTranslations]
   static final Map<String, Map<Locale, String>> _translations = {
     'Savekey App': {
       TranslationLocales.german: 'App',
     }
   };
 
+  /// What actually is used to translate Stuff in the App.
+  /// It adds the [_translations], as much as a few [StandardTranslations]
+  /// to a Map and returns the complete Map
   static Map<String, Map<Locale, String>> get translations {
     final Map<String, Map<Locale, String>> localTranslations = {};
 

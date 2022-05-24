@@ -1,7 +1,5 @@
 library main;
 
-import 'dart:html';
-
 import 'package:flutter/material.dart';
 import 'package:savekey/values/translations.dart';
 import 'package:string_translate/string_translate.dart'
@@ -11,11 +9,15 @@ void main() {
   runApp(const Savekey());
 }
 
+/// The Standard Stateless Widget that represents the
+/// Material App.
+/// Is created as first Widget on Startup.
 class Savekey extends StatelessWidget {
   const Savekey({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    // Init the Translation Package
     Translation.init(
       supportedLocales: {
         TranslationLocales.english,
@@ -33,6 +35,7 @@ class Savekey extends StatelessWidget {
     /// This isn't shown to the User at any time.
     const title = 'Savekey_App';
 
+    // Actual App
     return MaterialApp(
       /* Developer Section */
       checkerboardOffscreenLayers: false,
@@ -60,6 +63,7 @@ class Savekey extends StatelessWidget {
       onGenerateTitle: (_) {
         return title;
       },
+
       useInheritedMediaQuery: false,
       scrollBehavior: const MaterialScrollBehavior(),
     );
