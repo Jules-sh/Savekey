@@ -1,12 +1,32 @@
 library main;
 
+import 'dart:io';
+
+import 'package:bloc_implementation/bloc_implementation.dart' show BlocParent;
 import 'package:flutter/material.dart';
+import 'package:modern_themes/modern_themes.dart';
+import 'package:savekey/blocs/loading_bloc.dart';
+import 'package:savekey/blocs/welcome_bloc.dart';
+import 'package:savekey/logic/routes.dart';
+import 'package:savekey/screens/shared/loading_screen.dart';
+import 'package:savekey/screens/shared/welcome_screen.dart';
 import 'package:savekey/values/translations.dart';
 import 'package:string_translate/string_translate.dart'
-    show Translation, TranslationLocales;
+    hide Translate, StandardTranslations;
 
 void main() {
   runApp(const Savekey());
+}
+
+/// Determines whether the OS is an
+/// Desktop OS or not.
+bool _isDesktop() {
+  const desktopOS = <String>['macos', 'windos', 'linux'];
+  if (desktopOS.contains(Platform.operatingSystem)) {
+    return true;
+  } else {
+    return false;
+  }
 }
 
 /// The Standard Stateless Widget that represents the
@@ -17,6 +37,7 @@ class Savekey extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    WidgetRouter.isDesktop = _isDesktop();
     // Init the Translation Package
     Translation.init(
       supportedLocales: {
@@ -51,19 +72,36 @@ class Savekey extends StatelessWidget {
       navigatorKey: const GlobalObjectKey('Navigator_KEY'),
       scaffoldMessengerKey: const GlobalObjectKey('Scaffold_Messenger_KEY'),
 
-      // TODO: change Theme Section
       // Theme
       themeMode: ThemeMode.system,
+      theme: Themes.lightTheme,
+      darkTheme: Themes.darkTheme,
+      highContrastTheme: Themes.highContrastLightTheme,
+      highContrastDarkTheme: Themes.highContrastDarkTheme,
 
       // Locales
       supportedLocales: Translation.supportedLocales,
+      localizationsDelegates: TranslationDelegates.localizationDelegates,
+      locale: Translation.defaultLocation,
 
+      // Routes
+      initialRoute: '/',
+      routes: {
+        LoadingScreen.routeName: (context) => BlocParent(
+              bloc: LoadingBloc(),
+              child: LoadingScreen(),
+            ),
+        WelcomeScreen.routeName: (context) => BlocParent(
+              bloc: WelcomeBloc(),
+              child: const WelcomeScreen(),
+            ),
+        Routes.homescreen: (context) => WidgetRouter.homescreen(),
+      },
       // other
       title: title,
       onGenerateTitle: (_) {
         return title;
       },
-
       useInheritedMediaQuery: false,
       scrollBehavior: const MaterialScrollBehavior(),
     );
