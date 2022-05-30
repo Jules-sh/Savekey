@@ -9,8 +9,10 @@ import 'package:string_translate/string_translate.dart'
 class TranslatedStrings {
   /// Own Translations, that are not provided through the [StandardTranslations]
   static final Map<String, Map<Locale, String>> _translations = {
-    'Savekey App': {
-      TranslationLocales.german: 'App',
+    'We didn\'t found the Page you were looking for': {
+      TranslationLocales.german:
+          'Wir haben die Seite die du gesucht hast nicht gefunden',
+      // TODO: add Translations
     }
   };
 

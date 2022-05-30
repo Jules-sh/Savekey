@@ -9,6 +9,7 @@ import 'package:savekey/blocs/loading_bloc.dart';
 import 'package:savekey/blocs/welcome_bloc.dart';
 import 'package:savekey/logic/routes.dart';
 import 'package:savekey/screens/shared/loading_screen.dart';
+import 'package:savekey/screens/shared/unknown_page.dart';
 import 'package:savekey/screens/shared/welcome_screen.dart';
 import 'package:savekey/values/translations.dart';
 import 'package:string_translate/string_translate.dart'
@@ -89,7 +90,7 @@ class Savekey extends StatelessWidget {
       routes: {
         LoadingScreen.routeName: (context) => BlocParent(
               bloc: LoadingBloc(),
-              child: LoadingScreen(),
+              child: const LoadingScreen(),
             ),
         WelcomeScreen.routeName: (context) => BlocParent(
               bloc: WelcomeBloc(),
@@ -97,6 +98,10 @@ class Savekey extends StatelessWidget {
             ),
         Routes.homescreen: (context) => WidgetRouter.homescreen(),
       },
+      onUnknownRoute: (_) => MaterialPageRoute(
+        builder: (_) => const UnknownScreen(),
+      ),
+
       // other
       title: title,
       onGenerateTitle: (_) {
