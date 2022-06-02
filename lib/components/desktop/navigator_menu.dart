@@ -20,17 +20,19 @@ import 'package:flutter/material.dart';
 /// Specify the Button in the Scaffold you use pass as [child]
 class NavigatorMenu extends StatelessWidget {
   const NavigatorMenu({
+    required this.username,
     this.navigationAppBar,
-    required this.child,
     this.floatingActionButton,
     this.btnlocation,
     Key? key,
+    required this.child,
   }) : super(key: key);
 
   final Widget child;
   final PreferredSizeWidget? navigationAppBar;
   final FloatingActionButton? floatingActionButton;
   final FloatingActionButtonLocation? btnlocation;
+  final String username;
 
   @override
   Widget build(BuildContext context) {
@@ -49,7 +51,9 @@ class NavigatorMenu extends StatelessWidget {
         textDirection: TextDirection.ltr,
         verticalDirection: VerticalDirection.down,
         children: [
-          const _NavigatorMenuDrawer(),
+          _NavigatorMenuDrawer(
+            username: username,
+          ),
           const VerticalDivider(width: 2),
           SizedBox(
             height: mediaSize.height,
@@ -68,10 +72,12 @@ class NavigatorMenu extends StatelessWidget {
 
 /// The actual Drawer used inside the [NavigatorMenu]'s Scaffold.
 class _NavigatorMenuDrawer extends StatelessWidget {
-  const _NavigatorMenuDrawer({Key? key}) : super(key: key);
+  const _NavigatorMenuDrawer({
+    required this.username,
+    Key? key,
+  }) : super(key: key);
 
-  // TODO: change so you're able to pass it
-  final String username = 'User';
+  final String username;
 
   @override
   Widget build(BuildContext context) {

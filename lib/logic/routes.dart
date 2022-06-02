@@ -1,7 +1,9 @@
 library logic;
 
+import 'package:bloc_implementation/bloc_implementation.dart';
 import 'package:flutter/material.dart';
-import 'package:savekey/screens/desktop/homescreen_dekstop.dart';
+import 'package:savekey/blocs/homescreen_bloc.dart';
+import 'package:savekey/screens/desktop/homescreen_desktop.dart';
 import 'package:savekey/screens/mobile/homescreem_mobile.dart';
 import 'package:savekey/screens/shared/unknown_page.dart';
 import 'package:savekey/screens/shared/welcome_screen.dart';
@@ -54,9 +56,15 @@ class WidgetRouter extends StatelessWidget {
     switch (routeName) {
       case Routes.homescreen:
         if (isDesktop) {
-          return const HomescreenDesktop();
+          return BlocParent(
+            bloc: HomescreenBloc(),
+            child: const HomescreenDesktop(),
+          );
         } else {
-          return const HomescreenMobile();
+          return BlocParent(
+            bloc: HomescreenBloc(),
+            child: const HomescreenMobile(),
+          );
         }
       default:
         return const UnknownScreen();

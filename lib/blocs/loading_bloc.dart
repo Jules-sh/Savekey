@@ -11,7 +11,7 @@ class LoadingBloc extends Bloc {
 
   @override
   void init() {
-    _isFirstOpening = false;
+    _isFirstOpening = true;
     super.init();
   }
 

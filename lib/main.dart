@@ -1,10 +1,10 @@
 library main;
 
-import 'dart:io';
+import 'dart:io' show Platform;
 
 import 'package:bloc_implementation/bloc_implementation.dart' show BlocParent;
 import 'package:flutter/material.dart';
-import 'package:modern_themes/modern_themes.dart';
+import 'package:modern_themes/modern_themes.dart' show Themes;
 import 'package:savekey/blocs/loading_bloc.dart';
 import 'package:savekey/blocs/welcome_bloc.dart';
 import 'package:savekey/logic/routes.dart';
@@ -22,7 +22,9 @@ void main() {
 /// Determines whether the OS is an
 /// Desktop OS or not.
 bool _isDesktop() {
-  const desktopOS = <String>['macos', 'windos', 'linux'];
+  /// Array of Desktop Platform Names
+  const desktopOS = <String>['macos', 'windows', 'linux'];
+  // check for Desktop OS
   if (desktopOS.contains(Platform.operatingSystem)) {
     return true;
   } else {
