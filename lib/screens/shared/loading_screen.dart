@@ -7,8 +7,6 @@ import 'package:savekey/blocs/loading_bloc.dart';
 class LoadingScreen extends StatefulWidget {
   const LoadingScreen({Key? key}) : super(key: key);
 
-  static const routeName = '/';
-
   @override
   State<StatefulWidget> createState() => _LoadingScreenState();
 }

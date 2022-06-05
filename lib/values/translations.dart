@@ -13,7 +13,12 @@ class TranslatedStrings {
       TranslationLocales.german:
           'Wir haben die Seite die du gesucht hast nicht gefunden',
       // TODO: add Translations
-    }
+    },
+    'Welcome at Savekey. Let\'s set up your first Database': {
+      TranslationLocales.german:
+          'Wilkommen bei Savekey. Lass uns deine erste Datenbank anlegen.'
+    },
+    'Enter your Name': {}
   };
 
   /// What actually is used to translate Stuff in the App.

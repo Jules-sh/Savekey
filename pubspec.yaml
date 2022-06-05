@@ -32,6 +32,11 @@ dependencies:
     sdk: flutter
   flutter_localizations:
     sdk: flutter
+  path_provider: ^2.0.10
+  crypto: ^3.0.2
+  local_auth: ^2.1.0
+
+  # Own Packages
   string_translate: ^1.1.2
   bloc_implementation: ^1.1.3
   modern_themes: ^0.0.4

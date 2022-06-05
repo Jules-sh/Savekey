@@ -2,15 +2,10 @@ library main;
 
 import 'dart:io' show Platform;
 
-import 'package:bloc_implementation/bloc_implementation.dart' show BlocParent;
 import 'package:flutter/material.dart';
 import 'package:modern_themes/modern_themes.dart' show Themes;
-import 'package:savekey/blocs/loading_bloc.dart';
-import 'package:savekey/blocs/welcome_bloc.dart';
 import 'package:savekey/logic/routes.dart';
-import 'package:savekey/screens/shared/loading_screen.dart';
 import 'package:savekey/screens/shared/unknown_page.dart';
-import 'package:savekey/screens/shared/welcome_screen.dart';
 import 'package:savekey/values/translations.dart';
 import 'package:string_translate/string_translate.dart'
     hide Translate, StandardTranslations;
@@ -90,14 +85,8 @@ class Savekey extends StatelessWidget {
       // Routes
       initialRoute: '/',
       routes: {
-        LoadingScreen.routeName: (context) => BlocParent(
-              bloc: LoadingBloc(),
-              child: const LoadingScreen(),
-            ),
-        WelcomeScreen.routeName: (context) => BlocParent(
-              bloc: WelcomeBloc(),
-              child: const WelcomeScreen(),
-            ),
+        Routes.loadingscreen: (context) => WidgetRouter.loadingscreen(),
+        Routes.welcomescreen: (context) => WidgetRouter.welcomescreen(),
         Routes.homescreen: (context) => WidgetRouter.homescreen(),
       },
       onUnknownRoute: (_) => MaterialPageRoute(

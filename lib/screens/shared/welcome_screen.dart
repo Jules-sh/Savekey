@@ -6,13 +6,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart'
     show LengthLimitingTextInputFormatter, MaxLengthEnforcement;
 import 'package:savekey/blocs/welcome_bloc.dart';
+import 'package:savekey/logic/routes.dart';
+import 'package:string_translate/string_translate.dart';
 
 /// Welcome Screen for Desktop and Mobile
 class WelcomeScreen extends StatefulWidget {
   const WelcomeScreen({Key? key}) : super(key: key);
-
-  /// Route Name of the Welcome Screen
-  static const routeName = '/welcome_screen';
 
   @override
   State<StatefulWidget> createState() => _WelcomeScreenState();
@@ -35,6 +34,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
 
   /// Body of the Welcome Screen
   Widget get _body {
+    final Size query = MediaQuery.of(context).size;
     return Center(
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
@@ -45,52 +45,62 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
         children: <Widget>[
           const Icon(
             Icons.account_circle_rounded,
-            size: 50,
+            size: 100,
           ),
-          TextField(
-            autocorrect: true,
-            autofillHints: const <String>[
-              'Name',
-              'Lastname',
-            ],
-            autofocus: true,
-            clipBehavior: Clip.antiAliasWithSaveLayer,
-            dragStartBehavior: DragStartBehavior.down,
-            enableIMEPersonalizedLearning: true,
-            enableInteractiveSelection: true,
-            enableSuggestions: true,
-            enabled: true,
-            expands: false,
-            inputFormatters: <LengthLimitingTextInputFormatter>[
-              LengthLimitingTextInputFormatter(
-                40,
-                maxLengthEnforcement: MaxLengthEnforcement.enforced,
-              )
-            ],
-            keyboardAppearance: Theme.of(context).brightness,
-            keyboardType: TextInputType.name,
-            maxLength: 40,
-            maxLengthEnforcement: MaxLengthEnforcement.enforced,
-            maxLines: 2,
-            minLines: 1,
-            obscureText: false,
-            readOnly: false,
-            scribbleEnabled: true,
-            scrollPhysics: const BouncingScrollPhysics(),
-            selectionControls: MaterialTextSelectionControls(),
-            showCursor: true,
-            smartDashesType: SmartDashesType.enabled,
-            smartQuotesType: SmartQuotesType.enabled,
-            textAlign: TextAlign.center,
-            textAlignVertical: TextAlignVertical.center,
-            textCapitalization: TextCapitalization.words,
-            textDirection: TextDirection.ltr,
-            textInputAction: TextInputAction.done,
-            toolbarOptions: const ToolbarOptions(
-              copy: true,
-              cut: true,
-              paste: true,
-              selectAll: true,
+          const SizedBox(height: 15),
+          Text('Welcome at Savekey. Let\'s set up your first Database'.tr()),
+          const SizedBox(height: 15),
+          SizedBox(
+            width:
+                WidgetRouter.isDesktop ? query.width * 0.8 : query.width * 0.8,
+            child: TextField(
+              autocorrect: true,
+              autofillHints: const <String>[
+                'Name',
+                'Lastname',
+              ],
+              autofocus: true,
+              clipBehavior: Clip.antiAliasWithSaveLayer,
+              dragStartBehavior: DragStartBehavior.down,
+              enableIMEPersonalizedLearning: true,
+              enableInteractiveSelection: true,
+              enableSuggestions: true,
+              enabled: true,
+              expands: false,
+              inputFormatters: <LengthLimitingTextInputFormatter>[
+                LengthLimitingTextInputFormatter(
+                  40,
+                  maxLengthEnforcement: MaxLengthEnforcement.enforced,
+                )
+              ],
+              keyboardAppearance: Theme.of(context).brightness,
+              keyboardType: TextInputType.name,
+              maxLength: 40,
+              maxLengthEnforcement: MaxLengthEnforcement.enforced,
+              maxLines: 2,
+              minLines: 1,
+              obscureText: false,
+              readOnly: false,
+              scribbleEnabled: true,
+              scrollPhysics: const BouncingScrollPhysics(),
+              selectionControls: MaterialTextSelectionControls(),
+              showCursor: true,
+              smartDashesType: SmartDashesType.enabled,
+              smartQuotesType: SmartQuotesType.enabled,
+              textAlign: TextAlign.center,
+              textAlignVertical: TextAlignVertical.center,
+              textCapitalization: TextCapitalization.words,
+              textDirection: TextDirection.ltr,
+              textInputAction: TextInputAction.done,
+              toolbarOptions: const ToolbarOptions(
+                copy: true,
+                cut: true,
+                paste: true,
+                selectAll: true,
+              ),
+              decoration: InputDecoration(
+                labelText: 'Enter your Name'.tr(),
+              ),
             ),
           ),
         ],

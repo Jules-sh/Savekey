@@ -24,7 +24,11 @@ class UnknownScreen extends StatelessWidget {
         textDirection: TextDirection.ltr,
         verticalDirection: VerticalDirection.down,
         children: [
-          const Icon(Icons.question_mark_rounded),
+          const Icon(
+            Icons.question_mark_rounded,
+            size: 100,
+          ),
+          const SizedBox(height: 25),
           Text('We didn\'t found the Page you were looking for'.tr()),
         ],
       ),
