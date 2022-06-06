@@ -18,7 +18,7 @@ void main() {
 /// Desktop OS or not.
 bool _isDesktop() {
   /// Array of Desktop Platform Names
-  const desktopOS = <String>['macos', 'windows', 'linux'];
+  const desktopOS = <String>{'macos', 'windows', 'linux'};
   // check for Desktop OS
   if (desktopOS.contains(Platform.operatingSystem)) {
     return true;
@@ -76,6 +76,7 @@ class Savekey extends StatelessWidget {
       darkTheme: Themes.darkTheme,
       highContrastTheme: Themes.highContrastLightTheme,
       highContrastDarkTheme: Themes.highContrastDarkTheme,
+      color: Theme.of(context).primaryColor,
 
       // Locales
       supportedLocales: Translation.supportedLocales,
@@ -100,6 +101,8 @@ class Savekey extends StatelessWidget {
       },
       useInheritedMediaQuery: false,
       scrollBehavior: const MaterialScrollBehavior(),
+      restorationScopeId: title,
+      navigatorObservers: <NavigatorObserver>[HeroController()],
     );
   }
 }
