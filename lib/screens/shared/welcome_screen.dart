@@ -7,7 +7,7 @@ import 'package:flutter/services.dart'
     show LengthLimitingTextInputFormatter, MaxLengthEnforcement;
 import 'package:savekey/blocs/welcome_bloc.dart';
 import 'package:savekey/logic/routes.dart';
-import 'package:string_translate/string_translate.dart';
+import 'package:string_translate/string_translate.dart' show Translate;
 
 /// Welcome Screen for Desktop and Mobile
 class WelcomeScreen extends StatefulWidget {
@@ -44,7 +44,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
         verticalDirection: VerticalDirection.down,
         children: <Widget>[
           const Icon(
-            Icons.account_circle_rounded,
+            Icons.lock_person_rounded,
             size: 100,
           ),
           const SizedBox(height: 15),

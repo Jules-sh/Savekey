@@ -41,7 +41,7 @@ class TranslatedStrings {
   /// It adds the [_translations], as much as a few [StandardTranslations]
   /// to a Map and returns the complete Map
   static Map<String, Map<Locale, String>> get translations {
-    const Map<String, Map<Locale, String>> localTranslations = {};
+    final Map<String, Map<Locale, String>> localTranslations = {};
 
     localTranslations.addAll(_translations);
     localTranslations.addAll(StandardTranslations.actions);
