@@ -13,6 +13,8 @@ import 'package:path_provider/path_provider.dart'
 /// But you can only call this Method once, if you call it again later,
 /// it will resolve in a runtime error.
 class Storage {
+  const Storage();
+
   /// The Directory, where the Files are stored.
   static late final Directory dir;
 

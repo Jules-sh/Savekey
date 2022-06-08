@@ -71,7 +71,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                 LengthLimitingTextInputFormatter(
                   40,
                   maxLengthEnforcement: MaxLengthEnforcement.enforced,
-                )
+                ),
               ],
               keyboardAppearance: Theme.of(context).brightness,
               keyboardType: TextInputType.name,
