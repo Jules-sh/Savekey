@@ -26,6 +26,10 @@ class SavekeyFolder {
   /// Will be automatically set in the Constructor.
   late final DateTime _created;
 
+  /// Getter for the Date and Time of the Creation
+  /// of this Object.
+  DateTime get created => _created;
+
   /// Create a [SavekeyFolder] from a Json Map.
   /// You have to decode your Json String before calling this
   /// Constructor.

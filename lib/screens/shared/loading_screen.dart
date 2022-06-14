@@ -18,6 +18,8 @@ class _LoadingScreenState extends State<LoadingScreen> {
   Widget build(BuildContext context) {
     loadingBloc ??= BlocParent.of(context);
 
+    // A the call to the isFirstOpening Method,
+    // after the build Method is done.
     WidgetsBinding.instance.addPostFrameCallback((_) {
       loadingBloc!.isFirstOpening(context);
     });

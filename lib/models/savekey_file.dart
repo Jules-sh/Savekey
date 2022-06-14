@@ -33,6 +33,10 @@ class SavekeyFile {
   /// Will be automatically set in the Constructor.
   late final DateTime _created;
 
+  /// Getter for the Date and Time of the Creation
+  /// of this Object.
+  DateTime get created => _created;
+
   /// Create a [SavekeyFile] from a Json Map. This Map is <String, dynamic>.
   /// You have to call [jsonDecode] or decode the json manually before
   /// calling this.

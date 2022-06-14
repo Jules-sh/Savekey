@@ -41,6 +41,10 @@ class SavekeyEntry {
   /// These will be automatically set in the Constructor.
   late final DateTime _created;
 
+  /// Getter for the Date and Time of the Creation
+  /// of this Object.
+  DateTime get created => _created;
+
   /// Create a [SavekeyEntry] from a Json Map. This Map is <String, dynamic>.
   /// You have to decode you Json before calling this Method.
   factory SavekeyEntry.fromJson(Map<String, dynamic> jsonMap) {
