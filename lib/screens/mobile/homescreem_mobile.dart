@@ -35,7 +35,8 @@ class _HomescreenMobileState extends State<HomescreenMobile> {
     );
   }
 
+  /// Body of the Mobile Homescreen
   Widget get _body {
-    return Container();
+    return ListView();
   }
 }

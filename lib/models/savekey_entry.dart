@@ -1,12 +1,9 @@
 library models;
 
-import 'dart:convert' show jsonDecode, jsonEncode;
-
-import 'package:savekey/models/savekey_file.dart';
 import 'package:savekey/models/savekey_folder.dart';
 
 /// Model that represents a single Entry in this App.
-/// Always stored in a [SavekeyFile]. Mostly in a [SavekeyFolder]
+/// Mostly stored in a [SavekeyFolder].
 class SavekeyEntry {
   SavekeyEntry({
     required this.title,
@@ -44,34 +41,4 @@ class SavekeyEntry {
   /// Getter for the Date and Time of the Creation
   /// of this Object.
   DateTime get created => _created;
-
-  /// Create a [SavekeyEntry] from a Json Map. This Map is <String, dynamic>.
-  /// You have to decode you Json before calling this Method.
-  factory SavekeyEntry.fromJson(Map<String, dynamic> jsonMap) {
-    return SavekeyEntry(
-      title: jsonMap['title'],
-      username: jsonMap['username'],
-      password: jsonMap['password'],
-      notes: jsonMap['notes'],
-    );
-  }
-
-  /// Create a [SavekeyEntry] from a Json String.
-  /// You can call this Constructor without decoding you Json String
-  /// before. This Constructor will do it for you.
-  factory SavekeyEntry.fromJsonString(String json) {
-    final Map<String, dynamic> decoded = jsonDecode(json);
-
-    return SavekeyEntry(
-      title: decoded['title'],
-      username: decoded['username'],
-      password: decoded['password'],
-      notes: decoded['notes'],
-    );
-  }
-
-  /// Returns this Object as a Json String.
-  String toJson() {
-    return jsonEncode(this);
-  }
 }
