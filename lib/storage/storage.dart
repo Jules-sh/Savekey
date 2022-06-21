@@ -1,6 +1,7 @@
 library storage;
 
-import 'package:hive_flutter/hive_flutter.dart' show Box, Hive, HiveX;
+import 'package:hive_flutter/hive_flutter.dart'
+    show Box, Hive, HiveAesCipher, HiveX;
 import 'package:savekey/models/savekey_file.dart';
 import 'package:savekey/models/user.dart';
 
@@ -15,7 +16,7 @@ class Storage {
   /// Key for the User Box.
   static const String _userBoxKEY = 'User Box';
 
-  /// Box that contains a User.
+  /// Box that contains the User.
   static late final Box<User> _userBox;
 
   /// The Key for the Box that contains all Keys
@@ -40,11 +41,13 @@ class Storage {
   /// Must be called before anything else
   /// of this class can be called.
   /// Inits the Boxes, opens and assigns it.
-  static Future<void> init() async {
+  static Future<void> init(String password) async {
+    // Init Flutter
     Hive.initFlutter();
 
     // Get all the Keys for the
-    _databasesKeysBox = await Hive.openBox(_databaseKeysKEY);
+    _databasesKeysBox = await Hive.openBox(_databaseKeysKEY,
+        encryptionCipher: HiveAesCipher(password.codeUnits));
 
     // Get all the Databases and put it in the _listOfBoxes
     for (int count = 0; count < _databasesKeysBox.length; count++) {

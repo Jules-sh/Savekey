@@ -24,6 +24,9 @@ class Routes {
   static const homescreen = '/homescreen';
 }
 
+/// Widget to pass a route Name as String.
+/// Returns the corresponding Widget for eigther Mobile
+/// or Desktop Devides.
 class WidgetRouter extends StatelessWidget {
   WidgetRouter({Key? key}) : super(key: key) {
     routeName = '/';
@@ -48,7 +51,7 @@ class WidgetRouter extends StatelessWidget {
   late final String routeName;
 
   /// Whether it's an mobile or desktop OS
-  static bool? _isDesktop;
+  static late final bool? _isDesktop;
 
   /// Whether it's an mobile or desktop OS
   static set isDesktop(bool isDesktop) {
@@ -84,17 +87,11 @@ class WidgetRouter extends StatelessWidget {
       /// Homescreen is shown.
       /// If Statement determines if Mobile or Desktop Screen is shown
       case Routes.homescreen:
-        if (isDesktop) {
-          return BlocParent(
+        return BlocParent(
             bloc: HomescreenBloc(),
-            child: const HomescreenDesktop(),
-          );
-        } else {
-          return BlocParent(
-            bloc: HomescreenBloc(),
-            child: const HomescreenMobile(),
-          );
-        }
+            child: isDesktop
+                ? const HomescreenDesktop()
+                : const HomescreenMobile());
       default:
         return const UnknownScreen();
     }

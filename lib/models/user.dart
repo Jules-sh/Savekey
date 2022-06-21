@@ -5,6 +5,7 @@ import 'package:flutter/material.dart' show Image;
 /// Model that represents
 /// the User of this App.
 class User {
+  // Constant Costructor
   const User({
     required this.name,
     required this.picture,
