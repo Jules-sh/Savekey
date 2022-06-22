@@ -44,7 +44,7 @@ class _HomescreenDesktopState extends State<HomescreenDesktop> {
       // TODO: change Itemcount
       itemCount: 2,
       itemBuilder: (_, counter) {
-        return ListTile(
+        return const ListTile(
           autofocus: false,
           enableFeedback: true,
           enabled: true,

@@ -2,7 +2,9 @@ library storage;
 
 import 'package:hive_flutter/hive_flutter.dart'
     show Box, Hive, HiveAesCipher, HiveX;
+import 'package:savekey/models/internal_settings.dart';
 import 'package:savekey/models/savekey_file.dart';
+import 'package:savekey/models/settings_protocols.dart';
 import 'package:savekey/models/user.dart';
 
 /// Class that handles Operations done in IO
@@ -13,6 +15,10 @@ import 'package:savekey/models/user.dart';
 /// But you can only call this Method once, if you call it again later,
 /// it will resolve in a runtime error.
 class Storage {
+  static const String _settingsBoxKEY = 'Settings Box';
+
+  static late final Box<GeneralSettingsProtocol> _settingsBox;
+
   /// Key for the Users Box.
   static const String _userBoxKEY = 'User Box';
 
@@ -58,10 +64,27 @@ class Storage {
   /// Load all the Data
   static void loadData() {}
 
-  // TODO: implement
+  /// Returns an Iterable of Users.
+  /// The Users in the Iterable are all User
+  /// Accounts someone made in this App.
+  static Iterable<User> get users {
+    return _userBox.values;
+  }
 
   /// Returns whether the App is opened the first Time or not.
   static bool get isFirstOpening {
-    return true;
+    late final bool value;
+    _settingsBox.values.where((setting) {
+      if (setting.runtimeType is InternalSettingsProtocol) {
+        final internalSetting = setting as InternalSettingsProtocol;
+        if (internalSetting.name == allSettingNames[IsFirstOpeningSetting]) {
+          value = internalSetting.value;
+        }
+      }
+      // TODO: why this return?
+      return false;
+    });
+
+    return value;
   }
 }

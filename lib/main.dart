@@ -6,7 +6,6 @@ import 'package:flutter/material.dart';
 import 'package:modern_themes/modern_themes.dart' show Themes;
 import 'package:savekey/logic/routes.dart';
 import 'package:savekey/screens/shared/unknown_page.dart';
-import 'package:savekey/storage/storage.dart';
 import 'package:savekey/values/translations.dart';
 import 'package:string_translate/string_translate.dart'
     hide Translate, StandardTranslations;
