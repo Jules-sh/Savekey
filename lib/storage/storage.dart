@@ -41,7 +41,7 @@ class Storage {
   /// Must be called before anything else
   /// of this class can be called.
   /// Inits the Boxes, opens and assigns it.
-  static Future<void> init(String password) async {
+  static Future<void> init() async {
     // Init Flutter
     Hive.initFlutter();
 

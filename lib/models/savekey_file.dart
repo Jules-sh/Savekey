@@ -1,9 +1,12 @@
 library models;
 
-import 'package:hive/hive.dart' show HiveField, HiveType;
+import 'package:hive/hive.dart'
+    show BinaryReader, BinaryWriter, HiveField, HiveType, TypeAdapter;
 import 'package:savekey/models/savekey_folder.dart';
 import 'package:savekey/models/user.dart';
 import 'package:savekey/storage/storage.dart';
+
+part 'savekey_file.g.dart';
 
 /// Represents a single Database
 /// in this App.

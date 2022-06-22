@@ -1,7 +1,10 @@
 library models;
 
-import 'package:hive/hive.dart' show HiveField, HiveType;
+import 'package:hive/hive.dart'
+    show BinaryReader, BinaryWriter, HiveField, HiveType, TypeAdapter;
 import 'package:savekey/models/savekey_folder.dart';
+
+part 'savekey_entry.g.dart';
 
 /// Model that represents a single Entry in this App.
 /// Mostly stored in a [SavekeyFolder].
