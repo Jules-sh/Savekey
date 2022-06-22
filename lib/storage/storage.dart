@@ -13,7 +13,7 @@ import 'package:savekey/models/user.dart';
 /// But you can only call this Method once, if you call it again later,
 /// it will resolve in a runtime error.
 class Storage {
-  /// Key for the User Box.
+  /// Key for the Users Box.
   static const String _userBoxKEY = 'User Box';
 
   /// Box that contains the User.
@@ -46,14 +46,10 @@ class Storage {
     Hive.initFlutter();
 
     // Get all the Keys for the
-    _databasesKeysBox = await Hive.openBox(_databaseKeysKEY,
-        encryptionCipher: HiveAesCipher(password.codeUnits));
+    _databasesKeysBox = await Hive.openBox(_databaseKeysKEY);
 
-    // Get all the Databases and put it in the _listOfBoxes
-    for (int count = 0; count < _databasesKeysBox.length; count++) {
-      _listOfBoxes[count] =
-          await Hive.openBox(_databasesKeysBox.values.elementAt(count));
-    }
+    // Open User Box
+    _userBox = await Hive.openBox(_userBoxKEY);
   }
 
   /// Store all the Data
