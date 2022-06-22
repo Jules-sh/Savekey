@@ -9,11 +9,9 @@ import 'package:savekey/storage/storage.dart';
 class LoadingBloc extends Bloc {
   late final bool _isFirstOpening;
 
-  late final String password;
-
   @override
   void init() {
-    Storage.init(password);
+    Storage.init();
     Storage.loadData();
     _isFirstOpening = Storage.isFirstOpening;
     super.init();

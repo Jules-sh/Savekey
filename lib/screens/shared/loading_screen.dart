@@ -12,10 +12,11 @@ class LoadingScreen extends StatefulWidget {
 }
 
 class _LoadingScreenState extends State<LoadingScreen> {
-  LoadingBloc? loadingBloc;
+  late final LoadingBloc? loadingBloc;
 
   @override
   Widget build(BuildContext context) {
+    // Init and assign Bloc, if it isn't assigned yet
     loadingBloc ??= BlocParent.of(context);
 
     // A the call to the isFirstOpening Method,
