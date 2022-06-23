@@ -15,6 +15,7 @@ import 'package:savekey/models/user.dart';
 /// But you can only call this Method once, if you call it again later,
 /// it will resolve in a runtime error.
 class Storage {
+  /// Key for the Settings Box
   static const String _settingsBoxKEY = 'Settings Box';
 
   static late final Box<GeneralSettingsProtocol> _settingsBox;

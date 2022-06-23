@@ -96,9 +96,7 @@ class Savekey extends StatelessWidget {
 
       // other
       title: title,
-      onGenerateTitle: (_) {
-        return title;
-      },
+      onGenerateTitle: (_) => title,
       useInheritedMediaQuery: false,
       scrollBehavior: const MaterialScrollBehavior(),
       restorationScopeId: title,
