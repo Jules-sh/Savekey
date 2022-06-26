@@ -25,8 +25,8 @@ class Routes {
 }
 
 /// Widget to pass a route Name as String.
-/// Returns the corresponding Widget for eigther Mobile
-/// or Desktop Devides.
+/// Returns the corresponding Widget for either Mobile
+/// or Desktop Devices.
 class WidgetRouter extends StatelessWidget {
   WidgetRouter({Key? key}) : super(key: key) {
     routeName = '/';
